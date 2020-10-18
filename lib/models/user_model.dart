@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_bloc_notes/entities/user_entity.dart';
+import 'package:flutter_bloc_notes/entities/entities.dart';
 
 class User extends Equatable {
   final String id;
