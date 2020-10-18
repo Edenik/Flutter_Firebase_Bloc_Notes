@@ -7,6 +7,8 @@ import 'package:meta/meta.dart';
 
 class NotesRepository extends BaseNoteRepository {
   final Firestore _firestore;
+  final Duration _timeoutDuration = Duration(seconds: 10);
+
   NotesRepository({Firestore firestore})
       : _firestore = firestore ?? Firestore.instance;
 
@@ -15,7 +17,10 @@ class NotesRepository extends BaseNoteRepository {
 
   @override
   Future<Note> addNote({@required Note note}) async {
-    await _firestore.collection(Paths.notes).add(note.toEntity().toDocument());
+    await _firestore
+        .collection(Paths.notes)
+        .add(note.toEntity().toDocument())
+        .timeout(_timeoutDuration);
     return note;
   }
 
@@ -24,13 +29,18 @@ class NotesRepository extends BaseNoteRepository {
     await _firestore
         .collection(Paths.notes)
         .document(note.id)
-        .updateData(note.toEntity().toDocument());
+        .updateData(note.toEntity().toDocument())
+        .timeout(_timeoutDuration);
     return note;
   }
 
   @override
   Future<Note> deleteNote({@required Note note}) async {
-    await _firestore.collection(Paths.notes).document(note.id).delete();
+    await _firestore
+        .collection(Paths.notes)
+        .document(note.id)
+        .delete()
+        .timeout(_timeoutDuration);
     return note;
   }
 
