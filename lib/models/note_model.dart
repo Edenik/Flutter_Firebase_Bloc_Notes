@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc_notes/entities/note_entity.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc_notes/entities/entities.dart';
 
 class Note extends Equatable {
   final String id;
@@ -10,12 +10,13 @@ class Note extends Equatable {
   final Color color;
   final DateTime timestamp;
 
-  const Note(
-      {this.id,
-      @required this.userId,
-      @required this.color,
-      @required this.content,
-      @required this.timestamp});
+  const Note({
+    this.id,
+    @required this.userId,
+    @required this.color,
+    @required this.content,
+    @required this.timestamp,
+  });
 
   @override
   List<Object> get props => [id, userId, content, color, timestamp];
@@ -46,6 +47,22 @@ class Note extends Equatable {
       content: entity.content,
       color: HexColor(entity.color),
       timestamp: entity.timestamp.toDate(),
+    );
+  }
+
+  Note copy({
+    String id,
+    String userId,
+    String content,
+    Color color,
+    DateTime timestamp,
+  }) {
+    return Note(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      content: content ?? this.content,
+      color: color ?? this.color,
+      timestamp: timestamp ?? this.timestamp,
     );
   }
 }
