@@ -48,7 +48,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Stream<AuthState> _mapLoginToState() async* {}
+  Stream<AuthState> _mapLoginToState() async* {
+    try {
+      User currentUser = await _authRepository.getCurrentUser();
+      yield Authenticated(currentUser);
+    } catch (err) {
+      print(err);
+      yield Unauthenticated();
+    }
+  }
 
-  Stream<AuthState> _mapLogoutToState() async* {}
+  Stream<AuthState> _mapLogoutToState() async* {
+    try {
+      await _authRepository.logout();
+      yield* _mapAppStartedToState();
+    } catch (err) {
+      print(err);
+      yield Unauthenticated();
+    }
+  }
 }
