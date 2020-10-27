@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_notes/blocs/auth/auth_bloc.dart';
+import 'blocs/blocs.dart';
 import 'repositories/repositories.dart';
 import 'screens/screens.dart';
 
 void main() {
+  BlocSupervisor.delegate = SimpleBlocDelegate();
   runApp(MyApp());
 }
 
