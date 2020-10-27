@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_notes/blocs/auth/auth_bloc.dart';
+import 'package:flutter_bloc_notes/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -38,7 +39,8 @@ class HomeScreen extends StatelessWidget {
                     icon: Icon(Icons.brightness_4),
                     onPressed: () => print('change theme'))
               ],
-            )
+            ),
+            NotesGrid(),
           ],
         )
       ],
