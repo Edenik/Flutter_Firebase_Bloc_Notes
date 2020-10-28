@@ -15,6 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<ThemeBloc>(
+          create: (_) => ThemeBloc()..add(LoadTheme()),
+        ),
         BlocProvider<AuthBloc>(
           create: (_) => AuthBloc(
             authRepository: AuthRepository(),
@@ -27,11 +30,15 @@ class MyApp extends StatelessWidget {
           ),
         )
       ],
-      child: MaterialApp(
-        title: 'Flutter Firebase Bloc Notes',
-        debugShowCheckedModeBanner: false,
-        theme: Themes.themeData[AppTheme.LightTheme],
-        home: HomeScreen(),
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+        builder: (context, state) {
+          return MaterialApp(
+            title: 'Flutter Firebase Bloc Notes',
+            debugShowCheckedModeBanner: false,
+            theme: state.themeData,
+            home: HomeScreen(),
+          );
+        },
       ),
     );
   }
