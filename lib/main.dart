@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Firebase Bloc Notes',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primaryColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: HomeScreen(),

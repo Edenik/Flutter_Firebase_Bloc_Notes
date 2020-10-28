@@ -35,7 +35,7 @@ class Note extends Equatable {
       id: id,
       userId: userId,
       content: content,
-      color: '#${color.value.toRadixString(16)},',
+      color: '#${color.value.toRadixString(16)}',
       timestamp: Timestamp.fromDate(timestamp),
     );
   }

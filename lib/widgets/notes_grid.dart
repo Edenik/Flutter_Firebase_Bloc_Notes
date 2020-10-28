@@ -61,7 +61,7 @@ class NotesGrid extends StatelessWidget {
             ],
           ),
         ),
-        color: Colors.orange,
+        color: note.color,
       ),
     );
   }

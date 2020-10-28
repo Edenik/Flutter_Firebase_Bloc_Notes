@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
             SliverAppBar(
               floating: true,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text('Youre Notes'),
+                title: Text('Your Notes'),
               ),
               leading: IconButton(
                 icon: authState is Authenticated
