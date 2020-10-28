@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_notes/blocs/auth/auth_bloc.dart';
 import 'package:flutter_bloc_notes/blocs/blocs.dart';
+import 'package:flutter_bloc_notes/repositories/repositories.dart';
 import 'package:flutter_bloc_notes/widgets/widgets.dart';
+
+import 'screens.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -14,6 +16,22 @@ class HomeScreen extends StatelessWidget {
       },
       builder: (context, authState) {
         return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.black,
+            foregroundColor: Colors.white,
+            child: const Icon(Icons.add),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => BlocProvider<NoteDetailBloc>(
+                  create: (_) => NoteDetailBloc(
+                    authBloc: context.bloc<AuthBloc>(),
+                    notesRepository: NotesRepository(),
+                  ),
+                  child: NoteDetailScreen(),
+                ),
+              ),
+            ),
+          ),
           body: BlocBuilder<NotesBloc, NotesState>(
             builder: (context, notesState) {
               return _buildBody(context, authState, notesState);
@@ -53,7 +71,17 @@ class HomeScreen extends StatelessWidget {
             notesState is NotesLoaded
                 ? NotesGrid(
                     notes: notesState.notes,
-                    onTap: (note) => print(note),
+                    onTap: (note) => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => BlocProvider<NoteDetailBloc>(
+                          create: (_) => NoteDetailBloc(
+                            authBloc: context.bloc<AuthBloc>(),
+                            notesRepository: NotesRepository(),
+                          )..add(NoteLoaded(note: note)),
+                          child: NoteDetailScreen(note: note),
+                        ),
+                      ),
+                    ),
                   )
                 : const SliverPadding(padding: EdgeInsets.zero),
           ],
