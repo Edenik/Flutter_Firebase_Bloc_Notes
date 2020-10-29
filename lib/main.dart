@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_notes/config/themes.dart';
 import 'blocs/blocs.dart';
 import 'repositories/repositories.dart';
 import 'screens/screens.dart';
