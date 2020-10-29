@@ -1,16 +1,19 @@
-# flutter_bloc_notes
+# Flutter Notes App With FireBase And Bloc Architecture 
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# Adding + Updating + Deleting a Note:
+![Finished App](https://github.com/Edenik/Flutter_Firebase_Bloc_Notes/blob/main/media/Adding%20%2B%20Deleting%20%2B%20Updating%20a%20Note.gif)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# Dark/Light Mode:
+![Finished App](https://github.com/Edenik/Flutter_Firebase_Bloc_Notes/blob/main/media/Dark-Light%20Mode.gif)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+# Signup + Login:
+![Finished App](https://github.com/Edenik/Flutter_Firebase_Bloc_Notes/blob/main/media/Signup%20%2B%20Login.gif)
+
+
+Tutorial by Marcus NG - 
+https://marcusng.com/
+
