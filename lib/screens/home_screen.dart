@@ -61,7 +61,17 @@ class HomeScreen extends StatelessWidget {
                 iconSize: 28.0,
                 onPressed: () => authState is Authenticated
                     ? context.bloc<AuthBloc>().add(Logout())
-                    : print('go to login'),
+                    : Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider<LoginBloc>(
+                            create: (_) => LoginBloc(
+                              authBloc: context.bloc<AuthBloc>(),
+                              authRepository: AuthRepository(),
+                            ),
+                            child: LoginScreen(),
+                          ),
+                        ),
+                      ),
               ),
               actions: <Widget>[_buildThemeIconButton(context)],
             ),

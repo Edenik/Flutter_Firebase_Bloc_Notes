@@ -18,7 +18,7 @@ class LoginState {
   final bool isFailure;
   final String errorMessage;
 
-  bool get isFormValis => isEmailValid && isPasswordValid;
+  bool get isFormValid => isEmailValid && isPasswordValid;
 
   const LoginState({
     @required this.isEmailValid,
@@ -82,7 +82,7 @@ class LoginState {
       isEmailValid: isEmailValid,
       isPasswordValid: isPasswordValid,
       isSubmitting: false,
-      isSuccess: true,
+      isSuccess: false,
       isFailure: false,
       errorMessage: '',
     );
